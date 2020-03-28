@@ -1,5 +1,5 @@
 import * as React from "react";
-import "./styles.css";
+import "../../styles.css";
 import useFormValidation from "./useFormValidation";
 import validationAuth from "./validationAuth";
 
@@ -21,9 +21,9 @@ export default function App() {
   const displayErrors: any = errors;
   return (
     <div className="App">
-      <div className="container-fluid">
+      <div className="container">
         <div className="row">
-          <div className="col-sm">
+          <div className="col-sm-4 col-center">
             <h2>Halaman Login</h2>
             <h6>Selamat datang. silahkan login!</h6>
             <form
