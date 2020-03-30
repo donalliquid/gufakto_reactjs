@@ -1,4 +1,5 @@
 import * as React from "react";
+import Users from '../../models/Users'
 
 function useFormValidation(initialState: any, validate: any) {
   const [values, setValueus] = React.useState(initialState);
@@ -9,12 +10,24 @@ function useFormValidation(initialState: any, validate: any) {
     if (isSubmitting) {
       const noError = Object.keys(errors).length === 0;
       if (noError) {
-        console.log("Success: ", values);
+        auth();
         setIsSubmitting(false);
       } else {
         setIsSubmitting(false);
       }
     }
+
+    function auth() {
+      const auth = new Users();
+      const result = auth.auth(values.email, values.password);
+      result.then((res) => {
+        console.log(res);
+      })
+      .catch(e=>{
+        console.log("Gagal");
+      });
+    }
+
   }, [isSubmitting, errors, values]);
 
   function handleChange(event: any) {
